@@ -41,3 +41,23 @@ def display(head):
         temp = temp.next
         if temp != None:
             print(", ", end="")
+
+def to_list(head):
+    lst = []
+    temp = head
+    while temp:
+        lst.append(temp.data)
+        temp = temp.next
+    return lst
+
+def is_eual(list1, list2):
+    if list1 is list2:
+        return True
+
+    while list1 != None and list2 != None:
+        if list1.data != list2.data:
+            return False
+        list1 = list1.next
+        list2 = list2.next
+
+    return list1 == list2
