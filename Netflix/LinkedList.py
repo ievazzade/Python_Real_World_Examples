@@ -41,7 +41,8 @@ def display(head):
         temp = temp.next
         if temp != None:
             print(", ", end="")
-
+    print("\n")
+    
 def to_list(head):
     lst = []
     temp = head
