@@ -19,7 +19,7 @@ class lru_structure:
                 self.cache[key] = self.cache_vals.get_tail()
         else:
             self.cache_vals.remove_node(self.cache[key])
-            self.cache_vals.insert_at_tail(key, val)
+            self.cache_vals.insert_at_tail(key, value)
             self.cache[key] = self.cache_vals.get_tail()
 
     def Get(self, key):
