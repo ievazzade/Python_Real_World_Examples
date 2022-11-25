@@ -66,3 +66,6 @@ class DLinkedList:
     
     def get_head(self):
         return self.head
+    
+    def get_tail(self):
+        return self.tail
