@@ -44,8 +44,39 @@ class Trie:
 
         return False
 
+    def delete_helper(self, key, current, length, level):
+        deleted_self = False
+
+        if not current:
+            print("Key does not exist")
+            return deleted_self
+        
+        if level is length:
+            print("Level is length, we are at the end")
+            if current.children.count(None) == len(current.children):
+                print("- Node", current.char, ": has no children, delete it.")
+                current = None
+                deleted_self = True
+            else:
+                print("- Node", current.char, ": has children, don't delete it")
+                current.is_end_word = False
+                deleted_self = False
+        else:
+            index = self.get_index(key[level])
+            print("Traverse to", key[level])
+            child_node = current.children[index]
+            child_deleted = self.delete_helper(key, child_node, length, level + 1)
+            if child_deleted:
+                print("-Delete Link from", current.char, "to", key[level])
+                current.children[index] = None
+                
+
     def delete(self, key):
-        pass
+        if not self.root or not key:
+            print("None key or empty trie error")
+            return
+        print("\nDeleting: ", key)
+        self.delete_helper(key, self.root, len(key), 0)
 
 if __name__ == "__main__":
     keys = ["the", "a", "there", "answer", "any",
